@@ -1,0 +1,26 @@
+[package]
+name = "freelancer-marketplace-platform"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "freelancer_marketplace_lib"
+crate-type = ["cdylib"]
+
+[dependencies]
+soroban-sdk = "21.5.3"
+wee_alloc = "0.4.5"
+
+[profile.release]
+opt-level = "z"
+overflow-checks = true
+debug = 0
+strip = "symbols"
+debug-assertions = false
+panic = "abort"
+codegen-units = 1
+lto = true
+
+[profile.release-with-logs]
+inherits = "release"
+debug-assertions = true
